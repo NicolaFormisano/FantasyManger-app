@@ -1,1 +1,98 @@
-/* You can add global styles to this file, and also import other style files */
+/* Metti questo in cima a src/styles.css */
+html, body, app-root {
+  height: 100%;
+  margin: 0;
+}
+
+/* rimuove il colore azzurro del body senza toccare le card */
+body {
+  background-color: transparent !important;
+}
+
+/* prepara app-root come contesto di stacking */
+app-root {
+  position: relative;
+  z-index: 0;
+}
+
+/* immagine di sfondo fissata DIETRO tutti gli elementi (ruotata di 90°) */
+app-root::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url('/assets/immagini/campo.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  z-index: -1;
+  pointer-events: none;
+
+
+  
+}
+
+/* ------------------------------------------------------------
+   Regole per rendere "tutto" trasparente e vedere meglio lo sfondo
+   ------------------------------------------------------------ */
+
+/* Rende trasparenti i contenitori principali (card, liste, container, overlay...) */
+
+.card,
+
+.border,
+.position-relative,
+.col-4 {
+  background-color: rgba(0, 0, 0, 0.492) !important;
+  background-image: none !important;
+  box-shadow: none !important; /* rimuove ombre pesanti che coprono lo sfondo */
+}
+.modal-overlay{
+    background-color:rgba(0, 0, 0, 0.703) !important;
+}
+
+
+
+.list-group-item,
+.card-body,
+.card-title,
+.card-text{
+    background-color: rgba(128, 128, 128, 0);
+}
+
+/* Assicura che eventuali elementi con background inline siano resi trasparenti */
+
+
+/* Mantieni il testo leggibile: puoi rimuovere o adattare queste regole se non servono */
+.card, .card-body, .list-group-item {
+  color: inherit; /* non tocchiamo il colore del testo */
+}
+
+/* ---------- Opzioni semitrasparenti (commentate) ----------
+   Se vuoi invece vedere l'immagine ma mantenere leggibilità, usa una semitrasparenza.
+   Scommenta una delle opzioni qui sotto e commenta le regole di piena trasparenza sopra.
+*/
+
+/* Opzione A: leggero overlay bianco semitrasparente (mantiene leggibilità) */
+/*
+.container,
+.card,
+.bg-light,
+.list-group-item {
+  background-color: rgba(255,255,255,0.75) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+}
+*/
+
+/* Opzione B: overlay scuro semitrasparente (testo chiaro funziona meglio) */
+/*
+.container,
+.card,
+.bg-light,
+.list-group-item {
+  background-color: rgba(0,0,0,0.35) !important;
+  color: #fff !important;
+}
+*/
+
+/* Fine file */
